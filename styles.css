@@ -1,24 +1,26 @@
 body {
     font-family: Arial, sans-serif;
+    line-height: 1.6;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    overflow-x: hidden;
 }
 
 header {
     background: #333;
     color: #fff;
-    padding: 1rem;
+    padding: 1rem 0;
 }
 
 nav ul {
     list-style: none;
     padding: 0;
+    text-align: center;
 }
 
 nav ul li {
     display: inline;
-    margin-right: 1rem;
+    margin: 0 10px;
 }
 
 nav ul li a {
@@ -26,52 +28,79 @@ nav ul li a {
     text-decoration: none;
 }
 
-#hero {
-    background: #f4f4f4;
-    text-align: center;
-    padding: 2rem 0;
-}
-
 section {
-    padding: 2rem;
-    max-width: 800px;
-    margin: 0 auto;
+    padding: 2rem 0;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease, transform 1s ease;
 }
 
-h1, h2, h3 {
+section.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+section.slide-in {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+#home {
+    text-align: center;
+}
+
+#home img {
+    max-width: 150px;
+    border-radius: 50%;
+}
+
+h2 {
     color: #333;
 }
 
-ul {
-    list-style-type: disc;
-    margin-left: 20px;
+.project {
+    border: 1px solid #ddd;
+    padding: 1rem;
+    margin-bottom: 1rem;
 }
 
-.job, .project {
-    margin-bottom: 1.5rem;
+.project a {
+    display: inline-block;
+    margin-right: 10px;
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.project a:hover {
+    text-decoration: underline;
 }
 
 form {
-    display: flex;
-    flex-direction: column;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 form label {
-    margin-top: 1rem;
+    display: block;
+    margin-bottom: 5px;
 }
 
-form input, form textarea {
+form input,
+form textarea {
+    width: 100%;
     padding: 0.5rem;
-    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
 form button {
-    margin-top: 1rem;
-    padding: 0.75rem;
     background: #333;
     color: #fff;
     border: none;
+    padding: 0.75rem 1.5rem;
     cursor: pointer;
+    border-radius: 4px;
 }
 
 form button:hover {
@@ -79,11 +108,42 @@ form button:hover {
 }
 
 footer {
-    text-align: center;
-    padding: 1rem;
     background: #333;
     color: #fff;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 1s forwards;
+}
+
+.slide-in {
+    animation: slideIn 1s forwards;
+}
+
+.hidden {
+    opacity: 0;
 }
